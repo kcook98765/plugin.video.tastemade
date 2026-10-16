@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.tastemade.workstation\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "#30000"
+msgid "Account"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Email"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Password"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Account settings"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Verify login"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Browse Tastemade"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Authenticated with the official viewing service. Playback entitlement is checked separately for each video."
+msgstr ""
+
+msgctxt "#30007"
+msgid "Next page"
+msgstr ""
+
+msgctxt "#30008"
+msgid "Untitled"
+msgstr ""
+
+msgctxt "#30009"
+msgid "The prototype could not complete this request. Details withheld to protect account information."
+msgstr ""

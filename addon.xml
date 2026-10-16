@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.tastemade.workstation" name="Tastemade Workstation" version="0.1.0" provider-name="Workstation Project">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Unofficial Tastemade viewing prototype</summary>
+    <description lang="en_GB">Browse Tastemade shows, verify an existing account and play entitled unencrypted HLS videos. No purchases or DRM circumvention. Not affiliated with Tastemade.</description>
+    <disclaimer lang="en_GB">Experimental private workstation prototype. Requires an eligible Tastemade account for subscription videos. Catalog and service APIs may change. Password masking does not encrypt Kodi settings.</disclaimer>
+    <platform>all</platform>
+    <license>MIT</license>
+    <language>en</language>
+    <source>https://www.tastemade.com/</source>
+  </extension>
+</addon>
