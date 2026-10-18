@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.tastemade.workstation" name="Tastemade Workstation" version="0.1.0" provider-name="Workstation Project">
+<addon id="plugin.video.tastemade.workstation" name="Tastemade" version="0.1.0" provider-name="Workstation Project">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
+    <import addon="inputstream.adaptive" version="20.3.18" optional="true" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_GB">Unofficial Tastemade viewing prototype</summary>
-    <description lang="en_GB">Browse Tastemade shows, verify an existing account and play entitled unencrypted HLS videos. No purchases or DRM circumvention. Not affiliated with Tastemade.</description>
-    <disclaimer lang="en_GB">Experimental private workstation prototype. Requires an eligible Tastemade account for subscription videos. Catalog and service APIs may change. Password masking does not encrypt Kodi settings.</disclaimer>
+    <summary lang="en_GB">Unofficial Tastemade videos and optional live TV</summary>
+    <description lang="en_GB">Browse VOD shows, movies, seasons and episodes with programme artwork, summaries and clear navigation.
+
+Use an eligible Tastemade account to play entitled, provider-declared unencrypted HLS videos. Your profile can reuse its viewing session, verify sign-in and sign out locally.
+
+Optional live TV opens the current channel list directly and uses compatible InputStream Adaptive. Live TV is off by default; installation or enabling is offered only with your consent when you choose Play.
+
+Keeps Kodi's native views and playback controls. Includes original generic icon and background artwork, not official service branding.</description>
+    <disclaimer lang="en_GB">Independent, unofficial add-on; not affiliated with or endorsed by Tastemade. Service/content names identify their respective owners. Eligible account permissions are required; no purchase, DRM or region bypass is provided. Password masking does not encrypt saved settings. Media/session URLs may appear in native Kodi or player logs; review logs before sharing and protect reusable credentials. Original artwork is not a legal guarantee of trademark clearance.</disclaimer>
     <platform>all</platform>
     <license>MIT</license>
     <language>en</language>
-    <source>https://www.tastemade.com/</source>
+    <website>https://www.tastemade.com/</website>
+    <news>Original unbranded icon and fanart added to the add-on Information page. Expanded feature, account, optional live TV and privacy descriptions. Catalogue navigation and working VOD/live playback remain unchanged.</news>
+    <assets>
+      <icon>resources/icon.png</icon>
+      <fanart>resources/fanart.jpg</fanart>
+    </assets>
   </extension>
 </addon>

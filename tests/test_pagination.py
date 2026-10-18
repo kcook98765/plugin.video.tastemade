@@ -123,13 +123,14 @@ class PaginationRoutingTests(unittest.TestCase):
         client.return_value.episodes.assert_called_once_with('fixture-series', 300)
         self.modules['xbmc'].executebuiltin.assert_not_called()
 
-    def test_empty_page_preserves_previous_and_shows_safe_notification(self):
+    def test_empty_page_preserves_previous_and_sets_clear_heading_without_toast(self):
         with patch.object(self.plugin, 'Client') as client:
             client.return_value.episodes.return_value = catalog_page({'items': []}, 60)
             self.route('?action=episodes&asset=fixture-series&offset=60')
         self.assertEqual(len(self.urls()), 1)
         self.assertEqual(self.urls()[0]['offset'], ['30'])
-        self.dialog.notification.assert_called_once_with('Fixture', 'No items on this page.')
+        self.dialog.notification.assert_not_called()
+        self.modules['xbmcplugin'].setPluginCategory.assert_called_with(1, 'Tastemade — label-30015')
         self.modules['xbmcplugin'].endOfDirectory.assert_called_once_with(1, succeeded=True, cacheToDisc=False)
 
     def test_bad_route_offset_does_not_request_network(self):

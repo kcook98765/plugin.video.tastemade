@@ -1,73 +1,79 @@
 # Tastemade for Kodi — private development repository
 
-Unofficial experimental video add-on for **Kodi 20/Nexus**. Not affiliated with
-or endorsed by Tastemade. The repository name does not change the add-on ID:
-**`plugin.video.tastemade.workstation`**, version **0.1.0**.
+Unofficial experimental add-on targeting **Kodi 20/Nexus and 21/Omega APIs**.
+The retained add-on ID and userdata namespace are `plugin.video.tastemade.workstation`.
+Source version is **0.1.0**; manual-test ZIP versions are separate identifiers.
+Not affiliated with or endorsed by Tastemade.
 
-## Installation
+## Browsing and playback
 
-The exact generation-9 add-on source is at this repository's root, with
-`addon.xml` at the root. For a private installation package, include **only the
-nine source files listed in `PROVENANCE.json`**, preserving their relative
-paths inside a top-level folder named `plugin.video.tastemade.workstation`.
-Install that ZIP through Kodi **Settings → Add-ons → Install from zip file**.
-Do not include tests, Git data, repository documentation, account data or caches.
-No installable package or release is published by this repository.
+- The catalogue offers direct **VOD** and **Live TV** entries; playlists are discovered dynamically.
+- Season grouping scans at most **300 episodes**, with an **All episodes** fallback;
+  playlist and episode pages contain **30 items**, with Previous/Next navigation.
+- Catalogue artwork, descriptions and rich Kodi Information metadata are supported.
+  Local icon/fanart are original static artwork: no official logos or images,
+  no runtime Pillow dependency, and no genuine screenshot gallery yet.
+- VOD's HLS master/external-audio linkage is fixed. Playback supports entitled,
+  unencrypted direct HTTPS HLS; DRM, purchases and geographic bypass are unsupported.
+- Live TV is optional and **off by default**, using direct InputStream Adaptive (ISA).
+  Use **ISA 20.3.18+ on Nexus** or **21.4.3+ on Omega**, matching Kodi's major branch.
+  **Install/Enable** prompts require user consent; older ISA versions need a manual update.
+  Browsing, accounts and VOD do not require ISA.
 
-Open the add-on's **Account settings**, enter the email/password for an existing
-eligible official Tastemade account, save, and choose **Verify login**. Defaults
-are blank and the password edit control is masked, not encrypted. Some
-third-party channel subscriptions do not grant access in Tastemade's own apps.
-Never share account-settings screenshots or export the private Kodi profile.
+## Account and privacy
 
-## Supported scope
+Use an eligible existing Tastemade account in **Settings → Account**, save, then
+choose **Verify login**. Defaults are blank; password masking is not encryption.
+Session tokens/settings belong in the private Kodi profile, protected by file
+permissions, **not encrypted storage**. Never commit accounts, settings or caches.
+Python diagnostics are sanitized; credentials, tokens and playback URLs are excluded.
+Native Kodi/ISA logging of media/session URLs is accepted; keep raw logs private.
+Account credentials, reusable tokens and cookies are not forwarded to media hosts.
 
-- Public catalog browsing, 30-item playlist/episode pages and Previous/Next.
-- Existing-account login, private session reuse, bounded server-driven refresh,
-  local logout and account-change invalidation.
-- Entitled **unencrypted, direct HTTPS HLS** playback only. DRM, purchases,
-  geographic bypass, offline downloads and indirect/ad-insertion streams are
-  not implemented. Do not assume the entire catalog is DRM-free.
-- Fixed sanitized error messages; no raw account responses, credentials,
-  bearer tokens or playback URLs are logged by the add-on.
+## Private packaging
 
-## Verification and known limits
+Preserve these **sixteen runtime paths** inside the ZIP's top-level directory
+`plugin.video.tastemade.workstation/`:
 
-| Evidence | Result / limit |
-| --- | --- |
-| Kodi Nexus 20.5 | Authentication/session reuse, logout/re-login and a one-episode active-video observation across 60 seconds passed on the preceding generation-6 baseline. Three-series playback samples also passed on an earlier baseline. |
-| Generation 9 | Bounded Kodi UI checks passed for playlist and episode Next/Previous, Back context and short final pages. No new playback test was performed for the pagination-only change. |
-| Offline checks | 40 focused tests passed; Nexus syntax, manifest, packaging, types and official checker passed. Offline metadata URL checking remained unverified; optional artwork is absent. |
-| Not verified | Audio output, actual paused state, seek distance, media-clock progression, genuine live expiry/refresh, live account changes and full-episode reliability. Active-video samples are not continuous playback telemetry. |
-| Windows portable | User-reported native `OPENSSL_Uplink(...) no OPENSSL_Applink` error during online browsing and after saving account settings. **Windows authentication/playback remain unverified. This is not evidence of invalid credentials.** No SSL fix is claimed. |
+```text
+LICENSE.txt
+README.md
+addon.xml
+default.py
+resources/settings.xml
+resources/language/resource.language.en_gb/strings.po
+resources/lib/auth.py
+resources/lib/catalog_metadata.py
+resources/lib/catalogue.py
+resources/lib/diagnostics.py
+resources/lib/live_playback.py
+resources/lib/plugin.py
+resources/lib/service.py
+resources/icon.png
+resources/fanart.jpg
+resources/ARTWORK-NOTICE.txt
+```
 
-The source still pins an observed official web bundle, uses the first supported
-HLS variant, and lacks richer metadata, search, seasons and computed playlists.
-The focused tests use synthetic data and mocks, not credentials or a real Kodi:
+Install through Kodi **Settings → Add-ons → Install from zip file**.
+`tools/build_addon_art.py` is repository-only tooling using existing Pillow at build
+time. Exclude it, tests, Git data, ZIPs, accounts and caches from runtime packages.
+
+## Verification
+
+Recorded offline result: **235 tests passed**, using synthetic data and mocked Kodi.
+Static validation and bounded native checks are separate, build-specific evidence.
+The user reported that Shield presentation “looks good”; this is not exact-build
+automated full QA or proof of complete playback/live-session reliability.
+Run tests from the repository root. For static validation, use a source-only
+export whose directory matches the add-on ID, not the whole repository with
+tests/Git metadata; replace placeholders with local directories.
 
 ```sh
 python3 -B -m unittest discover -s tests -v
+python -m kodi_agent_toolkit.cli validate <ADDON_DIRECTORY> --branch nexus --cache <CACHE_DIRECTORY>
 ```
 
-All 40 tests were also rerun successfully in this standalone repository after
-adapting only the test library-root and temporary-directory paths.
-
-## Provenance, privacy and workflow
-
-`PROVENANCE.json` records generation 9, the verified checkpoint commit and exact
-file sizes/SHA256 hashes. All nine source files, including the original root
-README and license notice, are unchanged. This `.github/README.md` is an
-additional repository guide, not a replacement for the source README.
-
-**This repository is not yet the registered Kodi Lab development source.**
-Registration/grant/baseline/workspace migration is a separate task. Nothing here
-changes existing registered sources, workspaces, deployments or installations.
-
-Credentials, runtime settings, auth caches, logs, screenshots, ZIPs, MCP/OpenCode
-configuration and workstation administration records are excluded. Git ignores
-are not a substitute for reviewing what is staged. Session files are private
-profile data protected by file permissions, **not encrypted storage**.
-
-The source's existing **MIT License notice in `LICENSE.txt`** is retained
-unchanged. No new license or ownership claim is added. Tastemade content and
-trademarks are not licensed or redistributed by this repository.
+`PROVENANCE.json` records the **historical generation-9 import**, not current source.
+This repository is **not a registered Kodi Lab development source**.
+The existing **MIT license in `LICENSE.txt`** is preserved. Tastemade content and
+trademarks are not licensed or redistributed here; no official images are included.

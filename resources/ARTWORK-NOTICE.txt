@@ -1,0 +1,16 @@
+Original add-on artwork
+======================
+
+resources/icon.png and resources/fanart.jpg are original geometric artwork
+created for this independent Kodi add-on. They contain no official Tastemade
+logo, wordmark, app icon, programme image, stock photograph, external font or
+third-party visual asset. They are not screenshots of Kodi or another app.
+
+The editable/reproducible design is tools/build_addon_art.py in the development
+repository. Pillow is used only by that build tool and the existing validator;
+it is not an add-on runtime dependency. The rendered artwork is covered by the
+project's MIT license in LICENSE.txt.
+
+Service/content names in the add-on identify the service it accesses. The
+artwork is not provider branding or an endorsement. Original creation is not
+a legal guarantee of trademark clearance. No public release is made here.

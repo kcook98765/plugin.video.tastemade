@@ -19,7 +19,7 @@ msgid "Password"
 msgstr ""
 
 msgctxt "#30003"
-msgid "Account settings"
+msgid "Settings"
 msgstr ""
 
 msgctxt "#30004"
@@ -27,7 +27,7 @@ msgid "Verify login"
 msgstr ""
 
 msgctxt "#30005"
-msgid "Browse Tastemade"
+msgid "Browse"
 msgstr ""
 
 msgctxt "#30006"
@@ -43,5 +43,117 @@ msgid "Untitled"
 msgstr ""
 
 msgctxt "#30009"
-msgid "The prototype could not complete this request. Details withheld to protect account information."
+msgid "Unable to load this page. Go Back and try again. Details withheld to protect account information."
+msgstr ""
+
+msgctxt "#30010"
+msgid "Playback"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Enable live TV (requires InputStream Adaptive)"
+msgstr ""
+
+msgctxt "#30012"
+msgid "Optional, off by default. Enable live TV, then select a channel to offer installation or enabling of InputStream Adaptive through Kodi's confirmation dialogs. VOD and browsing do not require it. Media/session URLs may appear in Kodi or player logs."
+msgstr ""
+
+msgctxt "#30013"
+msgid "Sign out"
+msgstr ""
+
+msgctxt "#30014"
+msgid "Previous page"
+msgstr ""
+
+msgctxt "#30015"
+msgid "No items on this page"
+msgstr ""
+
+msgctxt "#30016"
+msgid "No supported items on this page"
+msgstr ""
+
+msgctxt "#30017"
+msgid "Seasons"
+msgstr ""
+
+msgctxt "#30018"
+msgid "Season {}"
+msgstr ""
+
+msgctxt "#30019"
+msgid "Other episodes"
+msgstr ""
+
+msgctxt "#30020"
+msgid "All episodes"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Browse all episodes by page"
+msgstr ""
+
+msgctxt "#30024"
+msgid "Specials"
+msgstr ""
+
+msgctxt "#30025"
+msgid "VOD"
+msgstr ""
+
+msgctxt "#30026"
+msgid "Live TV"
+msgstr ""
+
+msgctxt "#30027"
+msgid "Browse on-demand shows, movies and episodes."
+msgstr ""
+
+msgctxt "#30028"
+msgid "Choose a live channel to watch. Live playback is optional and can be enabled in Settings."
+msgstr ""
+
+msgctxt "#30029"
+msgid "Browse VOD and live TV channels without signing in."
+msgstr ""
+
+msgctxt "#30030"
+msgid "Manage this profile's account and optional live TV playback settings."
+msgstr ""
+
+msgctxt "#30031"
+msgid "Verify sign-in using the account configured for this Kodi profile."
+msgstr ""
+
+msgctxt "#30032"
+msgid "Sign out on this Kodi profile without changing other devices' sessions."
+msgstr ""
+
+msgctxt "#30033"
+msgid "Browse {}."
+msgstr ""
+
+msgctxt "#30034"
+msgid "{} episodes"
+msgstr ""
+
+msgctxt "#30035"
+msgid "Browse all episodes, page by page."
+msgstr ""
+
+msgctxt "#30036"
+msgid "Return to the previous page."
+msgstr ""
+
+msgctxt "#30037"
+msgid "Continue to the next page."
+msgstr ""
+
+msgctxt "#30038"
+msgid "1 episode"
+msgstr ""
+
+msgctxt "#30039"
+msgid "Browse seasons and episodes."
 msgstr ""

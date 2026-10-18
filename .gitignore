@@ -38,3 +38,15 @@ build/
 opencode.json
 opencode.jsonc
 # resources/settings.xml is the required blank-default source declaration.
+!resources/icon.png
+!resources/fanart.jpg
+
+# Local operational handoffs/evidence are not repository documentation.
+/SESSION-HANDOFF.md
+/BRANDING.md
+/DIAGNOSTICS.md
+/LIVE.md
+/LIVE-RELAY-HISTORY.md
+/METADATA.md
+/NAVIGATION.md
+/PRESENTATION.md

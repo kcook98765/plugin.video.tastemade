@@ -236,6 +236,8 @@ class NavigationTests(unittest.TestCase):
         self.modules['xbmcgui'].Dialog = MagicMock(return_value=self.dialog)
         self.modules['xbmcgui'].ListItem = MagicMock()
         self.modules['xbmcplugin'].setContent = MagicMock()
+        self.modules['xbmcplugin'].setPluginCategory = MagicMock()
+        self.modules['xbmcplugin'].setPluginFanart = MagicMock()
         self.modules['xbmcplugin'].addDirectoryItem = MagicMock()
         self.modules['xbmcplugin'].endOfDirectory = MagicMock()
         self.modules['xbmcplugin'].setResolvedUrl = MagicMock()

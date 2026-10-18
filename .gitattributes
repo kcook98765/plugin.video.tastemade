@@ -1,2 +1,9 @@
 # Preserve generation-9 LF source bytes on every checkout platform.
 * text eol=lf
+
+# Static artwork must retain its exact binary bytes (including PNG signatures).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.zip binary

@@ -1,12 +1,14 @@
 {
   "generation": 9,
+  "working_tree_note": "Historical initial-import manifest: the generation-9 sizes and hashes below do not describe current source. Subsequent work adds sanitized diagnostics, VOD master/audio preservation, optional direct ISA live playback with consent-based setup, catalogue metadata/seasons/navigation and original unbranded static artwork. Runtime packaging is sixteen explicit files; tests/build tools/Git/private data are excluded. Source version remains 0.1.0; manually prepared test ZIP versions are separate. Git publication is not source registration, deployment or a release. Machine-specific operational evidence is maintained locally outside Git.",
   "checkpoint_commit": "16f89c1b973019fe66c4541feeef61b30c0b26d6",
   "addon_id": "plugin.video.tastemade.workstation",
   "addon_version": "0.1.0",
-  "source_correspondence": "All nine add-on files preserve the verified generation-9 bytes exactly.",
+  "source_correspondence": "At initial import these nine files matched the verified generation-9 bytes exactly. The file manifest below is preserved historical evidence, not a current working-tree hash manifest.",
   "registered_lab_source": false,
-  "migration_note": "Lab source registration and workflow migration are a separate task; existing sources and deployments are unchanged.",
+  "migration_note": "Repository publication does not register or migrate a Kodi Lab source. Source bindings, exact-generation validation/deployment and manual test packages are managed separately.",
   "verification_summary": {
+    "scope": "Historical initial-import evidence, not complete acceptance of subsequent features.",
     "target_family": "Internal managed Kodi Nexus 20.5",
     "generation_9": "Bounded playlist and episode Next/Previous, Back context and short final-page UI acceptance passed.",
     "preceding_baseline": "Generation-6 authentication persistence, local logout/re-login, one-episode active video across a 60-second wall-clock interval and stop passed; earlier three-series samples also played.",

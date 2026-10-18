@@ -26,5 +26,14 @@
         </setting>
       </group>
     </category>
+    <category id="playback" label="30010">
+      <group id="1">
+        <setting id="enable_live" type="boolean" label="30011" help="30012">
+          <default>false</default>
+          <level>0</level>
+          <control type="toggle" />
+        </setting>
+      </group>
+    </category>
   </section>
 </settings>
