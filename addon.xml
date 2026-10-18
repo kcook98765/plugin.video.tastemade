@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.tastemade.workstation" name="Tastemade" version="0.1.0" provider-name="Workstation Project">
+<addon id="plugin.video.tastemade" name="Tastemade" version="0.1.0" provider-name="kcook98765">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
     <import addon="inputstream.adaptive" version="20.3.18" optional="true" />
@@ -21,7 +21,7 @@ Keeps Kodi's native views and playback controls. Includes original generic icon 
     <license>MIT</license>
     <language>en</language>
     <website>https://www.tastemade.com/</website>
-    <news>Original unbranded icon and fanart added to the add-on Information page. Expanded feature, account, optional live TV and privacy descriptions. Catalogue navigation and working VOD/live playback remain unchanged.</news>
+    <news>Prepared the permanent plugin.video.tastemade identity and standalone installation guide. Earlier development builds use a separate settings profile; sign in again after installing this add-on. Includes VOD and season browsing, optional direct InputStream Adaptive live TV and original icon/fanart.</news>
     <assets>
       <icon>resources/icon.png</icon>
       <fanart>resources/fanart.jpg</fanart>

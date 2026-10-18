@@ -1,145 +1,146 @@
-# Tastemade — unofficial Kodi add-on
+# Tastemade for Kodi
 
-Kodi 20.5/Nexus and Kodi 21.3/Omega source targets. Unofficial; not affiliated
-with Tastemade. Static checks and transport tests do not prove native playback.
+An unofficial Kodi add-on for browsing Tastemade shows, movies, seasons and
+episodes, with optional live TV.
 
-Configure an existing account manually through Account settings. Both defaults
-are blank; the password control is masked, not encrypted. Never export the
-runtime profile. Verify login creates or reuses the viewing session and reports
-only a fixed, non-identifying status. Playback reuses saved authentication.
+**Not affiliated with or endorsed by Tastemade.** An eligible Tastemade account
+and the appropriate content entitlement are required for playback. This add-on
+does not bypass subscriptions, purchases, regional restrictions or DRM.
 
-Session storage is restricted to the add-on profile's auth/ subdirectory (0700)
-and atomically replaced session.json (0600). It contains the viewing bearer,
-a stable web-device ID and a salted credential binding, not a second copy of
-email/password. This is private storage, NOT encrypted storage. Authentication
-is checked with /user; an authenticated 401 triggers the official POST
-/user/refresh-token and one retry. No JWT lifetime or refresh-token field is
-invented. Rejected/expired sessions require Verify login; temporary network
-failures preserve the saved session. Explicit Verify login can sign in again.
+## Requirements
 
-Log out clears the local bearer and keeps the profile signed out until Verify
-login (or an account change). It does not revoke other devices' sessions.
-Changing either account field invalidates the cache after settings closes or
-before the next authenticated operation, including changes made outside this
-add-on menu. Reusable credentials and full playback URLs are never deliberately
-logged by the add-on's Python diagnostics or included in plugin routes.
-Kodi/InputStream Adaptive logs can contain provider media/session URLs; this is
-accepted behavior, not a promise that native logs are safe to publish. Account
-access/refresh tokens, passwords, usernames and cookies must still be protected.
+- **Kodi 20 (Nexus) or Kodi 21 (Omega).**
+- An internet connection. Browsing the catalogue does not require signing in.
+- An eligible Tastemade account for playback; available content depends on your
+  account and location.
+- For optional live TV: **InputStream Adaptive 20.3.18 or newer on Nexus**, or
+  **21.4.3 or newer on Omega**, from the matching Kodi branch. Availability varies
+  by platform and Kodi distribution. VOD does not require InputStream Adaptive.
 
-Settings/login/logout actions replace their action route with the root after
-their modal closes, including on errors. Playback failures stay in the listing.
-Root is offline and has four entries. Identical menu reference/label pairs are
-deduplicated, preserving distinct pages. Public browsing needs no account.
+The add-on is under development. Service changes can affect browsing and
+playback; complete reliability across all Kodi platforms is not guaranteed.
 
-Errors distinguish authenticated-session rejection, explicit GEO blockers,
-membership/product/purchase blockers, network/rate-limit/server failures and
-unsupported streams. A generic 403 is not misrepresented as a password or
-region error. Raw responses, GraphQL messages and untrusted blocker messages
-are never displayed. Unexpected failures remain generic for privacy.
+## Installation
 
-Only entitled, provider-declared unencrypted direct HLS is selected. VOD keeps
-its original validated master (including external audio), existing strict URL/
-manifest checks, and native playback with only the public media User-Agent.
-No DRM, purchase, geo bypass, download, secret importing or profile exporting.
-Only this add-on directory is a package/deployment input. Private credentials,
-tests and local validation candidates must NEVER be registered or deployed.
+### Standalone ZIP installation
 
-Catalogue items include available descriptions, artwork and typed video tags.
-Complete bounded episode inventories offer numeric seasons and ordered episodes;
-curated playlists retain provider order. Remaining: computed playlists/search, resilient bootstrap/bundle discovery,
-concurrent-invocation token refresh locking, cross-platform private-storage
-policy, and broader native/network acceptance. Audio, pause state, seeking,
-media-clock and native Information-page claims require observed evidence.
+This GitHub project currently contains a standalone video add-on, **not a Kodi
+add-on repository**. Installation and updates use packaged add-on ZIP files.
 
-## Optional live TV
+1. Open the project's [Releases](https://github.com/kcook98765/plugin.video.tastemade/releases)
+   page and download the **add-on ZIP attached to a release**. If no installation
+   ZIP is listed, an installable release has not been published yet.
+   Do not use GitHub's **Code → Download ZIP** or the automatic **Source code**
+   archives as the installation package.
+2. Save the ZIP somewhere Kodi can access, such as your device's Downloads folder
+   or a network share.
+3. In Kodi, open **Settings → System → Add-ons** and enable **Unknown sources**
+   if needed. Read Kodi's warning and only install packages from sources you trust.
+4. Open **Settings → Add-ons → Install from zip file** and select the downloaded
+   add-on ZIP. Wait for the installation notification.
+5. Open **Add-ons → Video add-ons → Tastemade**.
 
-**Playback -> Enable live TV** is off by default. Browsing, catalogue metadata,
-account actions and VOD do not require or check InputStream Adaptive (ISA).
-Channel entries remain visible; selecting one while disabled explains the option.
+Menu wording can vary slightly with your Kodi skin. You can turn Unknown sources
+off again after installing; it may be needed again for a later manual update.
 
-To opt in, enable live TV in this add-on's settings and select a channel. If ISA
-is missing/disabled, the add-on offers one install/enable action through Kodi's
-normal confirmation UI. Nothing is installed or enabled without consent. Cancel
-returns to the listing without affecting VOD. A fresh enabled handle/version is
-checked after the native action; a dispatch return alone is not success. The
-manifest dependency stays optional, with no silent alternate-player fallback. Supported
-ISA release floors are **20.3.18 on Nexus** and **21.4.3 on Omega**. Kodi's version
-number is not ISA's version number. If setup fails/is cancelled or ISA is too old,
-playback stops before account access or stream requests. Existing old versions
-need an update through Kodi Add-ons; InstallAddon is not used as an updater.
+### Future Kodi repository installation
 
-One live path passes the provider's original HTTPS HLS master and unchanged
-playback query to ISA. The resolver retains authentication, entitlement, region
-and declared-DRM checks plus lightweight URL/known-credential guards. Media gets
-only the evidenced public User-Agent, encoded separately in ISA manifest/stream
-header properties. No account/API headers, cookies, license properties, TLS
-overrides or query-rewriting properties are forwarded. The explicit HLS type is
-set for ISA 20; supported ISA 21 versions auto-detect it.
+A separate Kodi add-on repository is planned for this and other add-ons. Once
+published, you will install that repository's ZIP, then use **Install from
+repository → [repository name] → Video add-ons → Tastemade**. The repository name
+and download link will be added here when available.
 
-ISA owns HLS reloads, media redirects, rendition selection and ordinary HLS
-discontinuities. Its user's quality settings are left alone. There is no proxy,
-background service, localhost listener, playback descriptor, custom downloader
-or ad filtering. A public stream test is not native ISA decoding or ad acceptance.
+That installation route and its update feed are **not available from this
+standalone project yet**. For now, use a packaged standalone ZIP when available.
 
-## Catalog pagination
+## First-time setup
 
-The catalogue's **Home** entry is displayed as **VOD**. **Live TV** opens the
-current live channel list directly, without Live Now -> Live Channels folders.
-The live playlist is discovered from the provider's page reference at request
-time, not a hardcoded ID; an unexpected ambiguous layout fails clearly instead
-of choosing an arbitrary playlist. Browsing channels still needs neither ISA
-nor sign-in; optional live playback checks apply only when Play is selected.
+1. Open **Tastemade → Settings → Account**.
+2. Enter your Tastemade email and password, then save the settings with **OK**.
+3. Select **Verify login** in the add-on's main menu.
+4. Open **Browse → VOD**, choose a programme, then select an episode or video.
 
-Root, catalogue, section and pagination folders include concise descriptions.
-Season folders show actual episode counts as secondary labels. Available provider
-summaries are preserved; fallback help is navigation guidance, not invented
-programme metadata. Exact placement of summaries/counts depends on the Kodi skin.
+Successful login does not guarantee access to every title: the service checks
+your entitlement for each video. The add-on reuses its saved viewing session.
+Use **Sign out** to clear the local session; this does not sign out other devices.
 
-Playlists and episode lists show up to 30 raw catalog items per page, with
-Previous page and Next page links. Requests fetch at most 31 entries; the extra
-lookahead determines whether more episodes exist even when the service omits
-total/size/offset metadata. The lookahead is not consumed: it is the first item
-of the next page, so page boundaries neither skip nor duplicate that item.
-Episode lists are no longer capped at the original single 300-item request.
-Known playlist totals are also honored; an empty page never offers Next page.
-Previous page remains available on an empty nonzero page after catalog changes.
-Invalid offsets/malformed paging responses fail with fixed sanitized messages.
-The live catalog can change between requests; this is offset pagination, not a
-snapshot guarantee. Search and computed playlists remain unsupported.
+### Optional live TV
 
-## Artwork and presentation
+Live TV is **off by default**.
 
-Series use suitable upstream landscape/portrait images in their corresponding
-Kodi roles. Season folders reuse available parent-series artwork: no independent
-season artwork was exposed by the sampled integration, and no covers/overlays
-are generated. Episode stills remain thumbnails; a portrait is not stretched
-into a landscape thumbnail. Seasons sort numerically, episodes sort within a
-selected season, and curated lists remain unsorted/provider-ordered.
+1. Open **Settings → Playback** and enable **Enable live TV (requires InputStream Adaptive)**.
+2. Open **Browse → Live TV** and select a channel.
+3. If InputStream Adaptive is missing or disabled, follow Kodi's installation or
+   enable confirmation. Nothing is installed or enabled without your consent.
 
-Missing/unsafe image values use a small fixed set of native Kodi textures;
-episode placeholders do not invent posters that would override real stills.
-Series fanart supplies season/episode backgrounds when available. The add-on's
-own Information/browser artwork is bundled at resources/icon.png and
-resources/fanart.jpg: original geometric plate/play imagery, not a provider logo
-or programme image. Catalogue image selection is unchanged; absent programme
-backgrounds still follow the native skin's behavior. No manifest declaration
-points at a missing file. Generic
-textures were verified against Estuary for Kodi 20.5/21.3; failed remote-image
-fallback varies by skin/view and is not guaranteed by setting an icon field.
-Browsing does not make blocking image-validation requests.
+If the required InputStream Adaptive version is unavailable on your platform,
+live TV cannot start. Update an older installed version through Kodi's Add-ons
+manager. Cancelling setup returns to the listing; VOD remains available.
 
-The original static artwork needs no runtime image library. Its reproducible
-build tool uses the existing validation environment's Pillow only; that tool is
-not an add-on entry point or dependency. See resources/ARTWORK-NOTICE.txt for
-the original-art notice. No website image or generated UI mockup is presented
-as a Kodi screenshot; the gallery is omitted until genuine capture files exist.
+## Browsing
 
-Titles/menus normalize HTML/entities/whitespace, summaries preserve paragraphs,
-and headings identify the series/season. Unknown dates/numbers/duration remain
-unset. Duration units were not conclusively verified. No view mode or user's
-settings are forced. Back/selection behavior still requires native verification.
+- **VOD** contains the service's available on-demand sections and programmes.
+- **Live TV** opens the current channel list directly; browsing it does not enable
+  live playback or require InputStream Adaptive.
+- Series show season folders when a complete season list can be determined.
+  **All episodes** is used when that inventory is incomplete.
+- Use **Next page**, **Previous page** and Kodi's **Back** control to navigate.
+- Descriptions, episode counts and artwork appear where supported by your skin
+  and view. Kodi's normal views and playback controls are left unchanged.
 
-Season discovery requests at most 300 episodes. If that inventory is capped or
-known incomplete, All episodes keeps the existing 30-item paged route rather
-than silently truncating a series or inventing a complete season list.
+Search and computed playlists are not currently supported. Only entitled,
+provider-declared unencrypted HLS streams are supported; there is no download,
+ad-filtering or DRM-bypass feature.
+
+## Updates
+
+Until the separate Kodi repository is available, check this project's Releases
+page and manually install a newer packaged ZIP using **Install from zip file**.
+Installing a newer version with the same add-on ID normally preserves settings;
+you do not need to uninstall or clear data first. This standalone GitHub project
+does not supply an automatic Kodi update feed.
+
+**For earlier testers:** the add-on ID is now `plugin.video.tastemade`. Earlier
+development builds used a different ID, so this is a separate installation rather
+than an in-place update of those builds. Enter your account settings again and
+recreate any favourites or shortcuts. Old settings and sessions are not copied
+or removed automatically.
+
+## Troubleshooting and support
+
+- **Login rejected:** check your account details and select **Verify login** again.
+  A network failure, subscription restriction or regional block is not necessarily
+  an incorrect password.
+- **A title will not play:** confirm it is available to your account and location.
+  Unsupported or DRM-protected streams cannot be played by this add-on.
+- **Live TV will not start:** check the Playback setting and the installed
+  InputStream Adaptive version, then try the channel again.
+- **A catalogue page fails:** go Back and retry. Service/API changes may require
+  an add-on update.
+
+For reproducible problems, use [GitHub Issues](https://github.com/kcook98765/plugin.video.tastemade/issues).
+Include the add-on version, Kodi version, operating system, InputStream Adaptive
+version if relevant, and the steps and visible error message. **Do not post
+credentials, saved profiles or unreviewed logs.**
+
+## Privacy
+
+Saved account settings and viewing sessions are **not encrypted**. Password
+masking only hides the on-screen value. Protect your Kodi profile and backups;
+do not share the add-on's settings or session files.
+
+The add-on's Python diagnostics omit credentials, tokens and playback URLs, but
+native Kodi/InputStream Adaptive logs **can contain media and session URLs**.
+Review and redact logs before sharing them. Keep email addresses, passwords,
+tokens, cookies and private network/device details out of public reports.
+
+## License and development
+
+The add-on and its original bundled artwork are licensed under the
+[MIT license](LICENSE.txt). Tastemade content and trademarks belong to their
+respective owners and are not redistributed or licensed by this project. The
+bundled icon and background are original generic artwork, not official branding;
+see the [artwork notice](resources/ARTWORK-NOTICE.txt).
+
+For source checks and packaging guidance, see
+[CONTRIBUTING.md](https://github.com/kcook98765/plugin.video.tastemade/blob/main/CONTRIBUTING.md).

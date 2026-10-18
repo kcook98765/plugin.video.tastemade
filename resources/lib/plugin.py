@@ -280,7 +280,7 @@ def run():
             item.setContentLookup(False)
             xbmcplugin.setResolvedUrl(handle, True, item)
         else:
-            raise ServiceError('Unsupported prototype route.')
+            raise ServiceError('Unsupported add-on action.')
     except ServiceError as error:
         success = False
         report(directory_stage(action), error)

@@ -88,12 +88,26 @@ class AddonArtworkTests(unittest.TestCase):
         self.assertEqual(self.metadata.findtext('website'), 'https://www.tastemade.com/')
         self.assertLess(len(self.metadata.findtext('news')), 1500)
 
-    def test_no_fake_gallery_or_service_or_namespace_change(self):
-        self.assertEqual(self.root.get('id'), 'plugin.video.tastemade.workstation')
+    def test_no_fake_gallery_or_service_and_version_unchanged(self):
         self.assertEqual(self.root.get('version'), '0.1.0')
         self.assertFalse(self.metadata.findall('assets/screenshot'))
         self.assertFalse(self.root.findall("extension[@point='xbmc.service']"))
         self.assertEqual(self.root.find("requires/import[@addon='inputstream.adaptive']").get('optional'), 'true')
+
+    def test_manifest_settings_and_translation_use_public_addon_id(self):
+        addon_id = 'plugin.video.tastemade'
+        self.assertEqual(self.root.get('id'), addon_id)
+        settings = ET.parse(ROOT / 'resources/settings.xml').getroot()
+        self.assertEqual([section.get('id') for section in settings.findall('section')],
+                         [addon_id])
+        translation = (ROOT / 'resources/language/resource.language.en_gb/strings.po').read_text()
+        self.assertIn('Project-Id-Version: ' + addon_id + r'\n', translation)
+
+    def test_public_identity_starts_with_blank_accounts_and_live_off(self):
+        settings = ET.parse(ROOT / 'resources/settings.xml').getroot()
+        defaults = {node.get('id'): node.findtext('default')
+                    for node in settings.findall('.//setting')}
+        self.assertEqual(defaults, {'username': '', 'password': '', 'enable_live': 'false'})
 
 
 if __name__ == '__main__':

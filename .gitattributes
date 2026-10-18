@@ -1,4 +1,4 @@
-# Preserve generation-9 LF source bytes on every checkout platform.
+# Use consistent LF line endings for source text on every checkout platform.
 * text eol=lf
 
 # Static artwork must retain its exact binary bytes (including PNG signatures).
