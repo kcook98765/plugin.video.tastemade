@@ -3,13 +3,55 @@
 An unofficial Kodi add-on for browsing Tastemade shows, movies, seasons and
 episodes, with optional live TV.
 
-**Not affiliated with or endorsed by Tastemade.** An eligible Tastemade account
-and the appropriate content entitlement are required for playback. This add-on
-does not bypass subscriptions, purchases, regional restrictions or DRM.
+This is an unofficial Kodi add-on developed independently and is not affiliated
+with, endorsed by, or sponsored by Tastemade. Tastemade and associated marks
+belong to their respective owners. **Tastemade does not support this add-on.**
+Use this project's issue tracker for add-on problems.
+
+An eligible Tastemade account and the appropriate content entitlement are
+required for playback. This add-on does not bypass subscriptions, purchases,
+regional restrictions or DRM. No provider authorization for this integration
+has been obtained or is claimed. The unresolved Tastemade terms-of-service
+restriction remains a release risk; the project's MIT license does not grant
+permission to use provider content, services or marks.
+
+## Initial 0.1.0 release status
+
+**0.1.0 is frozen for release planning and has not been published.** The planned
+first AI Kodi Repository catalog entry is **Kodi 21 (Omega) only**. The native
+evidence covers Linux Kodi 21.3 with Estuary: installation through Kodi Lab's
+uploaded-plugin workflow and sampled anonymous navigation. Kodi's GUI ZIP
+chooser and public-repository installation/update have not been tested for this
+add-on.
+
+Retained checks passed: 261 offline mocked tests and all six static stages for
+Nexus and Omega. These checks do not establish native authentication or
+playback. The user's manual tests remain pending: account login/session reuse,
+restart/logout/expiry recovery, entitled VOD video with audible audio and
+pause/seek/stop, plus optional live TV/InputStream Adaptive setup and playback.
+Live TV remains experimental and off by default. Remote artwork returning 404
+has no active fallback/retry; a controlled native missing-image test is pending.
+
+The installation package is `plugin.video.tastemade-0.1.0.zip` (122,001 bytes),
+with SHA-256:
+
+```text
+d21af0f89c118c2a4c789b656b27d6211a086cce961dc3501fa4ad00564fce87
+```
+
+This online guide has been updated separately. The frozen ZIP retains its
+earlier README; its references to source-project Releases and a future
+repository do not establish that Tastemade is available from either route.
 
 ## Requirements
 
-- **Kodi 20 (Nexus) or Kodi 21 (Omega).**
+- **Planned initial catalog: Kodi 21 (Omega); native evidence is limited to Linux
+  Kodi 21.3/Estuary.** Other Omega platforms have no native acceptance evidence.
+- Kodi 20 (Nexus) is a source/API target with static checks only and is excluded
+  from the initial catalog. Kodi 19 (Matrix) is outside the required
+  `xbmc.python >=3.0.1` API floor. Kodi 22 (Piers) is unqualified and excluded;
+  live playback rejects InputStream Adaptive 22.x. Manifest `platform=all`
+  does not establish all-platform support.
 - An internet connection. Browsing the catalogue does not require signing in.
 - An eligible Tastemade account for playback; available content depends on your
   account and location.
@@ -22,16 +64,18 @@ playback; complete reliability across all Kodi platforms is not guaranteed.
 
 ## Installation
 
-### Standalone ZIP installation
+### Standalone ZIP installation — after publication
 
-This GitHub project currently contains a standalone video add-on, **not a Kodi
-add-on repository**. Installation and updates use packaged add-on ZIP files.
+This GitHub project contains the video add-on source, **not a Kodi repository
+add-on**. No source-project Release asset currently exists. The planned direct
+download is the [AI Kodi Repository 0.1.0 package](https://kcook98765.github.io/ai-kodi-repository/packages/plugin.video.tastemade/plugin.video.tastemade-0.1.0.zip),
+with a [SHA-256 sidecar](https://kcook98765.github.io/ai-kodi-repository/packages/plugin.video.tastemade/plugin.video.tastemade-0.1.0.zip.sha256).
+**These Tastemade downloads are unpublished; the links are not installation
+availability claims.** Follow these steps only after publication is announced.
 
-1. Open the project's [Releases](https://github.com/kcook98765/plugin.video.tastemade/releases)
-   page and download the **add-on ZIP attached to a release**. If no installation
-   ZIP is listed, an installable release has not been published yet.
-   Do not use GitHub's **Code → Download ZIP** or the automatic **Source code**
-   archives as the installation package.
+1. Download that packaged add-on ZIP and check its SHA-256 against the digest
+   above and its published sidecar. Do not use GitHub's **Code → Download ZIP**
+   or automatic **Source code** archives as an installation package.
 2. Save the ZIP somewhere Kodi can access, such as your device's Downloads folder
    or a network share.
 3. In Kodi, open **Settings → System → Add-ons** and enable **Unknown sources**
@@ -43,15 +87,27 @@ add-on repository**. Installation and updates use packaged add-on ZIP files.
 Menu wording can vary slightly with your Kodi skin. You can turn Unknown sources
 off again after installing; it may be needed again for a later manual update.
 
-### Future Kodi repository installation
+### AI Kodi Repository installation — Tastemade admission pending
 
-A separate Kodi add-on repository is planned for this and other add-ons. Once
-published, you will install that repository's ZIP, then use **Install from
-repository → [repository name] → Video add-ons → Tastemade**. The repository name
-and download link will be added here when available.
+The separate [AI Kodi Repository](https://kcook98765.github.io/ai-kodi-repository/)
+already provides its repository installer. **Its catalogs do not yet contain
+Tastemade.** Installing the repository now does not make Tastemade available.
 
-That installation route and its update feed are **not available from this
-standalone project yet**. For now, use a packaged standalone ZIP when available.
+After the Omega catalog admission is announced:
+
+1. Download the [repository.ai.kodi 0.1.0 installer](https://kcook98765.github.io/ai-kodi-repository/packages/repository.ai.kodi/repository.ai.kodi-0.1.0.zip)
+   and its [SHA-256 sidecar](https://kcook98765.github.io/ai-kodi-repository/packages/repository.ai.kodi/repository.ai.kodi-0.1.0.zip.sha256).
+   The existing installer SHA-256 is
+   `f4ec0c67329e70516baa824606f9133ff95516bea0cfcee6370fa2ac7a0afdad`.
+2. On Kodi 21, use **Settings → Add-ons → Install from zip file** to install
+   the repository ZIP, enabling Unknown sources if needed.
+3. Open **Install from repository → AI Kodi Repository → Video add-ons →
+   Tastemade → Install**. Confirm the version is 0.1.0.
+4. Open **Add-ons → Video add-ons → Tastemade**.
+
+The repository installer has catalogs for several Kodi versions; that does not
+mean every add-on is admitted or tested in every catalog. Tastemade's proposed
+first catalog is Omega only.
 
 ## First-time setup
 
@@ -94,11 +150,13 @@ ad-filtering or DRM-bypass feature.
 
 ## Updates
 
-Until the separate Kodi repository is available, check this project's Releases
-page and manually install a newer packaged ZIP using **Install from zip file**.
-Installing a newer version with the same add-on ID normally preserves settings;
-you do not need to uninstall or clear data first. This standalone GitHub project
-does not supply an automatic Kodi update feed.
+After Tastemade is published through AI Kodi Repository, its Omega catalog is
+the planned update feed; updates also depend on your Kodi update settings.
+For manual updates, use only a newer reviewed package announced by this project
+and choose **Install from zip file**. Source-project Release mirrors are not
+currently provided. Installing a newer version with the same add-on ID normally
+preserves settings; back up your private profile before updating. Public-origin
+installation/update behavior still awaits native testing.
 
 **For earlier testers:** the add-on ID is now `plugin.video.tastemade`. Earlier
 development builds used a different ID, so this is a separate installation rather
@@ -136,11 +194,14 @@ tokens, cookies and private network/device details out of public reports.
 
 ## License and development
 
-The add-on and its original bundled artwork are licensed under the
+The project's add-on code and original bundled artwork are licensed under the
 [MIT license](LICENSE.txt). Tastemade content and trademarks belong to their
-respective owners and are not redistributed or licensed by this project. The
-bundled icon and background are original generic artwork, not official branding;
-see the [artwork notice](resources/ARTWORK-NOTICE.txt).
+respective owners. The ZIP contains no video files, provider application code or
+programme images. Programme artwork and service data are retrieved at runtime;
+their absence from the ZIP does not resolve the provider terms restriction or
+grant permission for their display. The bundled icon and background are original
+generic artwork, not official branding; see the
+[artwork notice](resources/ARTWORK-NOTICE.txt).
 
 For source checks and packaging guidance, see
 [CONTRIBUTING.md](https://github.com/kcook98765/plugin.video.tastemade/blob/main/CONTRIBUTING.md).
