@@ -62,7 +62,9 @@ class AuthTests(unittest.TestCase):
         data = Path(store.path).read_text()
         self.assertNotIn('fixture-user', data)
         self.assertNotIn('fixture-password', data)
-        self.assertEqual(list(Path(store.directory).iterdir()), [Path(store.path)])
+        lock = Path(store.directory) / 'session.lock'
+        self.assertEqual(stat.S_IMODE(lock.stat().st_mode), 0o600)
+        self.assertEqual(set(Path(store.directory).iterdir()), {Path(store.path), lock})
 
     def test_email_and_password_changes_invalidate(self):
         for username, password in [('other-user', 'fixture-password'), ('fixture-user', 'other-password')]:
