@@ -17,20 +17,25 @@ permission to use provider content, services or marks.
 
 ## Initial 0.1.0 release status
 
-**0.1.0 is frozen for release planning and has not been published.** The planned
-first AI Kodi Repository catalog entry is **Kodi 21 (Omega) only**. The native
-evidence covers Linux Kodi 21.3 with Estuary: installation through Kodi Lab's
-uploaded-plugin workflow and sampled anonymous navigation. Kodi's GUI ZIP
-chooser and public-repository installation/update have not been tested for this
-add-on.
+**0.1.0 is published in AI Kodi Repository for Kodi 21 (Omega) only.** See the
+[release notes and recorded limitations](https://github.com/kcook98765/ai-kodi-repository/releases/tag/tastemade-0.1.0).
+The frozen package was published on 2026-10-23 UTC (2026-10-22 Pacific).
 
-Retained checks passed: 261 offline mocked tests and all six static stages for
-Nexus and Omega. These checks do not establish native authentication or
-playback. The user's manual tests remain pending: account login/session reuse,
-restart/logout/expiry recovery, entitled VOD video with audible audio and
-pause/seek/stop, plus optional live TV/InputStream Adaptive setup and playback.
-Live TV remains experimental and off by default. Remote artwork returning 404
-has no active fallback/retry; a controlled native missing-image test is pending.
+Retained native evidence covers Linux Kodi 21.3 with Estuary: installation
+through Kodi Lab's uploaded-plugin workflow, sampled navigation, login/session
+reuse, video playback, pause/resume, one forward seek, stop, sequential logout
+refusal and fresh authenticated playback. Kodi's GUI ZIP chooser and
+public-repository installation/update have not been tested for this add-on.
+Retained checks also passed 261 offline mocked tests and all six static stages
+for Nexus and Omega; those checks supply no additional native acceptance.
+
+Genuine provider-session expiry, native overlapping logout and native
+missing-artwork fallback remain unobserved. Audible audio was unavailable on the
+managed target because it has no audio device. Runtime acceptance remains
+false/deferred; publication used the owner's scoped initial-release exceptions,
+which expire on 2027-10-22 at 23:59:59 UTC and supply no provider permission.
+Live TV remains experimental, off by default and outside the native acceptance
+scope. Remote artwork returning 404 has no active fallback/retry.
 
 The installation package is `plugin.video.tastemade-0.1.0.zip` (122,001 bytes),
 with SHA-256:
@@ -41,11 +46,12 @@ d21af0f89c118c2a4c789b656b27d6211a086cce961dc3501fa4ad00564fce87
 
 This online guide has been updated separately. The frozen ZIP retains its
 earlier README; its references to source-project Releases and a future
-repository do not establish that Tastemade is available from either route.
+repository predate publication. Use the download locations below; the published
+0.1.0 package bytes are unchanged.
 
 ## Requirements
 
-- **Planned initial catalog: Kodi 21 (Omega); native evidence is limited to Linux
+- **Published catalog: Kodi 21 (Omega); native evidence is limited to Linux
   Kodi 21.3/Estuary.** Other Omega platforms have no native acceptance evidence.
 - Kodi 20 (Nexus) is a source/API target with static checks only and is excluded
   from the initial catalog. Kodi 19 (Matrix) is outside the required
@@ -64,14 +70,15 @@ playback; complete reliability across all Kodi platforms is not guaranteed.
 
 ## Installation
 
-### Standalone ZIP installation — after publication
+### Standalone ZIP installation
 
 This GitHub project contains the video add-on source, **not a Kodi repository
-add-on**. No source-project Release asset currently exists. The planned direct
+add-on**. No source-project Release asset currently exists. The published direct
 download is the [AI Kodi Repository 0.1.0 package](https://kcook98765.github.io/ai-kodi-repository/packages/plugin.video.tastemade/plugin.video.tastemade-0.1.0.zip),
 with a [SHA-256 sidecar](https://kcook98765.github.io/ai-kodi-repository/packages/plugin.video.tastemade/plugin.video.tastemade-0.1.0.zip.sha256).
-**These Tastemade downloads are unpublished; the links are not installation
-availability claims.** Follow these steps only after publication is announced.
+The same frozen ZIP is available as a pinned
+[GitHub Release asset](https://github.com/kcook98765/ai-kodi-repository/releases/download/tastemade-0.1.0/plugin.video.tastemade-0.1.0.zip)
+in the distribution repository.
 
 1. Download that packaged add-on ZIP and check its SHA-256 against the digest
    above and its published sidecar. Do not use GitHub's **Code → Download ZIP**
@@ -87,13 +94,10 @@ availability claims.** Follow these steps only after publication is announced.
 Menu wording can vary slightly with your Kodi skin. You can turn Unknown sources
 off again after installing; it may be needed again for a later manual update.
 
-### AI Kodi Repository installation — Tastemade admission pending
+### AI Kodi Repository installation
 
 The separate [AI Kodi Repository](https://kcook98765.github.io/ai-kodi-repository/)
-already provides its repository installer. **Its catalogs do not yet contain
-Tastemade.** Installing the repository now does not make Tastemade available.
-
-After the Omega catalog admission is announced:
+provides its repository installer and **Tastemade 0.1.0 in the Omega catalog**.
 
 1. Download the [repository.ai.kodi 0.1.0 installer](https://kcook98765.github.io/ai-kodi-repository/packages/repository.ai.kodi/repository.ai.kodi-0.1.0.zip)
    and its [SHA-256 sidecar](https://kcook98765.github.io/ai-kodi-repository/packages/repository.ai.kodi/repository.ai.kodi-0.1.0.zip.sha256).
@@ -106,8 +110,8 @@ After the Omega catalog admission is announced:
 4. Open **Add-ons → Video add-ons → Tastemade**.
 
 The repository installer has catalogs for several Kodi versions; that does not
-mean every add-on is admitted or tested in every catalog. Tastemade's proposed
-first catalog is Omega only.
+mean every add-on is admitted or tested in every catalog. Tastemade is published
+in Omega only.
 
 ## First-time setup
 
@@ -150,8 +154,8 @@ ad-filtering or DRM-bypass feature.
 
 ## Updates
 
-After Tastemade is published through AI Kodi Repository, its Omega catalog is
-the planned update feed; updates also depend on your Kodi update settings.
+AI Kodi Repository's Omega catalog is the update feed; updates also depend on
+your Kodi update settings. The current published version is 0.1.0.
 For manual updates, use only a newer reviewed package announced by this project
 and choose **Install from zip file**. Source-project Release mirrors are not
 currently provided. Installing a newer version with the same add-on ID normally
